@@ -1,0 +1,7 @@
+curl -s https://ipinfo.io/$(echo $SSH_CLIENT | awk '{ print $1}') > ok.txt
+sed -i -e "s/  //g" ok.txt
+sed -i -e "s/{//g" ok.txt
+sed -i -e "s/}//g" ok.txt
+sed -i -e "s/,//g" ok.txt
+sed -i -e 's/"//g' ok.txt
+head -n -1 ok.txt > ok.txt
