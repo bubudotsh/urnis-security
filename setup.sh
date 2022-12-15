@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# require netstat
+# pour ssh login : essayer de faire un fichier /etc/ssh/sshrc
+
 green=$(tput setaf 2)
 red=$(tput setaf 1)
 normal=$(tput sgr0)
@@ -11,6 +14,7 @@ NC='\033[0m'
 where=$(pwd)
 
 echo -e "[ Urnis setup ]\n\n"
+
 
 whe=$(pwd)
 sudo mkdir /usr/share/urnis

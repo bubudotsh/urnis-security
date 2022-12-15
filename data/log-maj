@@ -1,1 +1,15 @@
-Urnis
+Atteint :1 http://fr.archive.ubuntu.com/ubuntu focal InRelease
+Atteint :2 http://ppa.launchpad.net/zorinos/apps/ubuntu focal InRelease
+Atteint :3 http://fr.archive.ubuntu.com/ubuntu focal-updates InRelease
+Atteint :4 http://packages.microsoft.com/repos/code stable InRelease
+Atteint :5 http://ppa.launchpad.net/zorinos/drivers/ubuntu focal InRelease
+Atteint :6 https://deb.termius.com squeeze InRelease
+Atteint :7 http://fr.archive.ubuntu.com/ubuntu focal-backports InRelease
+Atteint :8 https://deb.nodesource.com/node_16.x focal InRelease
+Atteint :9 http://ppa.launchpad.net/zorinos/patches/ubuntu focal InRelease
+Atteint :10 https://dl.winehq.org/wine-builds/ubuntu focal InRelease
+Atteint :11 http://ppa.launchpad.net/zorinos/stable/ubuntu focal InRelease
+Réception de :12 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Atteint :13 https://packages.zorinos.com/stable focal InRelease
+Atteint :14 https://packages.zorinos.com/patches focal InRelease
+Atteint :15 https://packages.zorinos.com/apps focal InRelease

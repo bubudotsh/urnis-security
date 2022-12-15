@@ -14,7 +14,6 @@ reciver=$(grep mailreciver src/urnis.conf | cut -c 13- | sed 's/"//g')
 tim=$(grep timet src/urnis.conf | cut -c 7- | sed 's/"//g')
 
 
-
 helper () {
     echo -e "${LGREY}[ Urnis 1.0.0 ]${NC}\n\n"
 
@@ -25,10 +24,10 @@ helper () {
     echo -e "       urnis OPTION"
 
     echo -e "\n   ${BLEU}Option${NC}"
-    printf "%-20s %s\n" "       audit" "make audit of your system"
-    printf "%-20s %s\n" "       update" "update of Urnis"
-    printf "%-20s %s\n" "       pm2" "generation of an audit every 12 hours automatically"
-    printf "%-20s %s\n" "       audit mail" "make audit of your system and send it by email"
+    printf "%-20s %-20s %s\n" "       -a" "audit" "make audit of your system"
+    printf "%-20s %-20s %s\n" "       -u" "update" "update of Urnis"
+    printf "%-20s %-20s %s\n" "       -l" "look" "generation of an audit every 12 hours automatically"
+    printf "%-20s %-20s %s\n" "       -m" "audit mail" "make audit of your system and send it by email"
 
     echo -e "\n   ${BLEU}Author${NC}"
     printf "%-20s %s\n" "       github" "https://github.com/bubudotsh/urnis-secutity"
@@ -37,8 +36,7 @@ helper () {
 }
 
 maj () {
-    echo -e '[+] system update \n'
-    sleep 1
+    echo -e "\n\n${BLEU}[+] MAJ SYSTEM${NC}\n-----------------------------------\n"
     (sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt update -y && sudo apt upgrade -y) > data/log-maj
     echo -e 'maj log aviable in data/log-maj \n'
 }
@@ -117,6 +115,7 @@ scan () {
 
 os_detections() {
     echo -e "${BLEU}[+] OS detections${NC}\n-----------------------------------\n"
+    sleep 1
     printf "%-20s %s\n" "System" "$(egrep '^(NAME)=' /etc/os-release | cut -c 7- | sed 's/"//g')" 2>&1 | tee -a data/audit
     printf "%-20s %s\n" "System version" "$(egrep '^(VERSION)=' /etc/os-release | cut -c 9- | sed 's/"//g')" 2>&1 | tee -a data/audit
     printf "%-20s %s\n" "cpu" "$(cat /proc/cpuinfo | grep -i "^model name" | awk -F": " '{print $2}' | head -1 | sed 's/ \+/ /g')" 2>&1 | tee -a data/audit
@@ -126,6 +125,7 @@ os_detections() {
 
 prog () {
     echo -e "\n\n${BLEU}[+] RECOMANDED PROGRAMS${NC}\n-----------------------------------\n"
+    sleep 1
     file_path="src/pro.txt"
     while read -r line; do
         if command -v $line > /dev/null 2>&1; then
@@ -153,23 +153,26 @@ audit () {
 
     info
     sleep 2
-    echo -e "-------------------------------" >>data/audit
+    echo -e "---------------------------------------" >>data/audit
     os_detections
-    echo -e "-------------------------------">>data/audit
+    echo -e "---------------------------------------" >> data/audit
+    BLA::start_loading_animation "${BLA_classic[@]}"
+    maj
     prog
     user_empty_password
     user_with_admin_right
     open_port
     admin_service
     firewall
-    echo -e "-------------------------------">>data/audit
+    echo -e "---------------------------------------" >>data/audit
     scan
-    echo -e "-------------------------------">>data/audit
+    BLA::stop_loading_animation
+    echo -e "---------------------------------------" >> data/audit
     echo -e "\n\n${BLEU}[+] SOURCES${NC}\n-----------------------------------\n"
     printf "%-20s %s\n" "maj log:" "data/log-maj" 2>&1 | tee -a data/audit
     printf "%-20s %s\n" "scan log:" "data/log" 2>&1 | tee -a data/audit
     printf "%-20s %s\n" "result scan:" "data/audit" 2>&1 | tee -a data/audit
-    echo -e "-------------------------------">>data/audit
+    echo -e "---------------------------------------" >> data/audit
     echo -e "\n\n${BLEU}[+] RESULT${NC}\n-----------------------------------\n"
     cat data/audit
 }
@@ -206,37 +209,3 @@ case $option in
         exit;;
     esac
 done
-
-
-
-# if [ $# = 0 ]
-# then
-#     helper
-# elif [ $# = 1 ]
-# then
-#     if [ "$1" = "audit" ]
-#     then
-#         audit 2>&1 | tee -a data/log
-#     elif [ "$1" = "update" ]
-#     then
-#         echo "Updating"
-#     else
-#         echo "bad option, try ./Urnis.sh"
-#     fi 
-# elif [ $# = 2 ]
-# then
-#     if [ "$1" = "audit" ]
-#     then
-#         if [ "$2" = "mail" ]
-#         then
-#             audit 2>&1 | tee -a data/log
-#             sudo python3 src/mailsender.py ${sender} ${passw} ${reciver}
-#         else
-#             echo "bad option, try ./Urnis.sh"
-#         fi
-#     else
-#         echo "bad option, try ./Urnis.sh"
-#     fi
-# else 
-#     echo "bad option, try ./Urnis.sh"   
-# fi

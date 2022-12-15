@@ -16,9 +16,10 @@ passw = sys.argv[2]
 reciver = sys.argv[3]
 
 def mail () :
+# /usr/share/urnis/data/audit
 
     #send mail
-    fi = open("../data/audit", 'r')
+    fi = open("data/audit", 'r')
     s = fi.read()
 
     #send mail
