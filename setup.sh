@@ -19,7 +19,7 @@ whe=$(pwd)
 sudo mkdir /usr/share/urnis
 sudo cp -fr .* /usr/share/urnis/
 sudo cp -fr src/urnis /usr/sbin/
-sudo sed -i -e 's/aaa/${whe}/g' /usr/sbin/urnis/src/clean.sh
+sudo sed -i -e 's/aaa/${whe}/g' /usr/share/urnis/src/clean.sh
 sudo chmod +x /usr/share/urnis/src/clean.sh
 sudo chmod +x /usr/share/urnis/src/sshlogin.sh
 sudo chmod +x /usr/share/urnis/audit.sh

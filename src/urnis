@@ -8,10 +8,10 @@ BLEU='\033[0;34m'
 LGREY='\033[0;37m'
 NC='\033[0m'
 
-sender=$(grep mailsender /usr/share/urnis/src/urnis.conf | cut -c 13- | sed 's/"//g')
-passw=$(grep password /usr/share/urnis/src/urnis.conf | cut -c 10- | sed 's/"//g')
-reciver=$(grep mailreciver /usr/share/urnis/src/urnis.conf | cut -c 13- | sed 's/"//g')
-tim=$(grep timet /usr/share/urnis/src/urnis.conf | cut -c 7- | sed 's/"//g')
+sender=$(sudo grep mailsender /usr/share/urnis/src/urnis.conf | cut -c 13- | sed 's/"//g')
+passw=$(sudo grep password /usr/share/urnis/src/urnis.conf | cut -c 10- | sed 's/"//g')
+reciver=$(sudo grep mailreciver /usr/share/urnis/src/urnis.conf | cut -c 13- | sed 's/"//g')
+tim=$(sudo grep timet /usr/share/urnis/src/urnis.conf | cut -c 7- | sed 's/"//g')
 pathfilemail="/usr/share/urnis/data/audit"
 
 pathaudit="/usr/share/urnis/data/audit"
@@ -120,11 +120,11 @@ scan () {
 os_detections() {
     echo -e "${BLEU}[+] OS detections${NC}\n-----------------------------------\n"
     sleep 1
-    printf "%-20s %s\n" "System" "$(egrep '^(NAME)=' /etc/os-release | cut -c 7- | sed 's/"//g')" 2>&1 | tee -a ${pathaudit}
-    printf "%-20s %s\n" "System version" "$(egrep '^(VERSION)=' /etc/os-release | cut -c 9- | sed 's/"//g')" 2>&1 | tee -a ${pathaudit}
-    printf "%-20s %s\n" "cpu" "$(cat /proc/cpuinfo | grep -i "^model name" | awk -F": " '{print $2}' | head -1 | sed 's/ \+/ /g')" 2>&1 | tee -a ${pathaudit}
+    printf "%-20s %s\n" "System" "$(egrep '^(NAME)=' /etc/os-release | cut -c 7- | sed 's/"//g')" 2>&1 | sudo tee -a ${pathaudit}
+    printf "%-20s %s\n" "System version" "$(egrep '^(VERSION)=' /etc/os-release | cut -c 9- | sed 's/"//g')" 2>&1 | sudo tee -a ${pathaudit}
+    printf "%-20s %s\n" "cpu" "$(cat /proc/cpuinfo | grep -i "^model name" | awk -F": " '{print $2}' | head -1 | sudo sed 's/ \+/ /g')" 2>&1 | tee -a ${pathaudit}
     printf "%-20s %s\n" "Number of cpu" "$(cat /proc/cpuinfo | grep processor | wc -l)" 2>&1 | tee -a ${pathaudit}
-    printf "%-20s %s\n" "RAM" "$(grep MemTotal /proc/meminfo | awk -F": " '{print $2}' | sed 's/ //g')" 2>&1 | tee -a ${pathaudit}
+    printf "%-20s %s\n" "RAM" "$(grep MemTotal /proc/meminfo | awk -F": " '{print $2}' | sed 's/ //g')" 2>&1 | sudo tee -a ${pathaudit}
 }
 
 prog () {
@@ -160,7 +160,6 @@ audit () {
     echo -e "---------------------------------------" >>${pathaudit}
     os_detections
     echo -e "---------------------------------------" >> ${pathaudit}
-    BLA::start_loading_animation "${BLA_classic[@]}"
     maj
     prog
     user_empty_password
@@ -199,7 +198,7 @@ case $option in
         echo "update"
         exit;;
     a)
-        audit 2>&1 | tee -a ${pathlog}
+        sudo audit 2>&1 | tee -a ${pathlog}
         exit;;
     m)
         audit 2>&1 | tee -a ${pathlog}
