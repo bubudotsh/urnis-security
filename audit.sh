@@ -8,10 +8,10 @@ BLEU='\033[0;34m'
 LGREY='\033[0;37m'
 NC='\033[0m'
 
-sender=$(grep mailsender src/urnis.conf | cut -c 13- | sed 's/"//g')
-passw=$(grep password src/urnis.conf | cut -c 10- | sed 's/"//g')
-reciver=$(grep mailreciver src/urnis.conf | cut -c 13- | sed 's/"//g')
-tim=$(grep timet src/urnis.conf | cut -c 7- | sed 's/"//g')
+sender=$(grep mailsender /usr/share/urnis/src/urnis.conf | cut -c 13- | sed 's/"//g')
+passw=$(grep password /usr/share/urnis/src/urnis.conf | cut -c 10- | sed 's/"//g')
+reciver=$(grep mailreciver /usr/share/urnis/src/urnis.conf | cut -c 13- | sed 's/"//g')
+tim=$(grep timet /usr/share/urnis/src/urnis.conf | cut -c 7- | sed 's/"//g')
 pathfilemail="/usr/share/urnis/data/audit"
 
 pathaudit="/user/share/urnis/data/audit"

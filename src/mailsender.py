@@ -17,7 +17,6 @@ reciver = sys.argv[3]
 path = sys.argv[4]
 
 def mail () :
-# /usr/share/urnis/data/audit
 
     #send mail
     fi = open(path, 'r')

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # require netstat
-# pour ssh login : essayer de faire un fichier /etc/ssh/sshrc
 
 green=$(tput setaf 2)
 red=$(tput setaf 1)
@@ -20,8 +19,9 @@ whe=$(pwd)
 sudo mkdir /usr/share/urnis
 sudo cp -fr .* /usr/share/urnis
 sudo cp -fr src/urnis /usr/sbin/urnis
-sed -i -e "s/aaa/${whe}/g" /usr/sbin/urnis
-sudo bash /usr/share/urnis
+sed -i -e "s/aaa/${whe}/g" /usr/sbin/urnis/clean.sh
 
 sudo touch /etc/ssh/sshrc
 sudo echo "bash /usr/share/urnis/src/sshlogin.sh" >> /etc/ssh/sshrc
+
+./src/clean.sh

@@ -18,6 +18,11 @@ Urnis is a script that performs a security audit of your system.
     - software and hardware information of your system
 
 
+## Require
+    - netsat
+    - python3
+
+
 ## Installation
 
 git clone this repo
