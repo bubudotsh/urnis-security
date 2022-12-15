@@ -22,4 +22,4 @@ sudo cp -fr src/urnis /usr/sbin/
 sudo chmod +x /usr/share/urnis/src/sshlogin.sh
 sudo chmod +x /usr/share/urnis/audit.sh
 
-sed -i '1s/^/bash \/usr\/share\/urnis\/src\/sshlogin.sh /' ~.bashrc
+sed -i '1s/^/bash \/usr\/share\/urnis\/src\/sshlogin.sh /' ~/.bashrc
