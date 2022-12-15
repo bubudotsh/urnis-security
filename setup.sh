@@ -26,5 +26,3 @@ sudo chmod +x /usr/share/urnis/audit.sh
 
 sudo touch /etc/ssh/sshrc
 sudo echo "bash /usr/share/urnis/src/sshlogin.sh" >> /etc/ssh/sshrc
-
-sudo bash src/clean.sh
