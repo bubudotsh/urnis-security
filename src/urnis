@@ -198,7 +198,7 @@ case $option in
         echo "update"
         exit;;
     a)
-        sudo audit 2>&1 | tee -a ${pathlog}
+        audit 2>&1 | tee -a ${pathlog}
         exit;;
     m)
         audit 2>&1 | tee -a ${pathlog}

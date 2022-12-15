@@ -1,2 +1,2 @@
 #!/usr/bin
-rm -fr "aaa"
+# rm -fr "aaa"
