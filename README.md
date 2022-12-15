@@ -49,7 +49,7 @@ Configuration of urnis
         -m      audit mail   make audit of your system and send it by email
 
     Usage :
-        urnis -a
+        sudo urnis -a
 ```
 
 ## Update
