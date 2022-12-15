@@ -8,7 +8,13 @@ BLEU='\033[0;34m'
 LGREY='\033[0;37m'
 NC='\033[0m'
 
+where=$(pwd)
+
 echo -e "[ Urnis setup ]\n\n"
 
-echo -e "${BLEU}[+] Configurations of mail${NC}"
-echo -e "enter mail"
+whe=$(pwd)
+sudo mkdir /usr/share/urnis
+sudo cp -fr .* /usr/share/urnis
+sudo cp -fr src/urnis /usr/sbin/urnis
+sed -i -e "s/aaa/${whe}/g" /usr/sbin/urnis
+sudo bash /usr/share/urnis
