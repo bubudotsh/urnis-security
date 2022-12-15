@@ -8,10 +8,9 @@ BLEU='\033[0;34m'
 LGREY='\033[0;37m'
 NC='\033[0m'
 
-
-sender=$(grep mailsender urnis.conf | cut -c 13- | sed 's/"//g')
-passw=$(grep password urnis.conf | cut -c 10- | sed 's/"//g')
-reciver=$(grep mailreciver urnis.conf | cut -c 13- | sed 's/"//g')
+sender=$(grep mailsender src/urnis.conf | cut -c 13- | sed 's/"//g')
+passw=$(grep password src/urnis.conf | cut -c 10- | sed 's/"//g')
+reciver=$(grep mailreciver src/urnis.conf | cut -c 13- | sed 's/"//g')
 
 
 helper () {
@@ -173,34 +172,57 @@ audit () {
     cat data/audit
 }
 
-if [ $# = 0 ]
-then
-    helper
-elif [ $# = 1 ]
-then
-    if [ "$1" = "audit" ]
-    then
+while getopts "huam" option; do
+case $option in
+    h)
+        helper
+        exit;;
+    u)
+        echo "update"
+        exit;;
+    a)
         audit 2>&1 | tee -a data/log
-    elif [ "$1" = "update" ]
-    then
-        echo "Updating"
-    else
-        echo "bad option, try ./Urnis.sh"
-    fi 
-elif [ $# = 2 ]
-then
-    if [ "$1" = "audit" ]
-    then
-        if [ "$2" = "mail" ]
-        then
-            audit 2>&1 | tee -a data/log
-            sudo python3 src/mailsender.py ${sender} ${passw} ${reciver}
-        else
-            echo "bad option, try ./Urnis.sh"
-        fi
-    else
-        echo "bad option, try ./Urnis.sh"
-    fi
-else 
-    echo "bad option, try ./Urnis.sh"   
-fi
+        exit;;
+    m)
+        audit 2>&1 | tee -a data/log
+        sudo python3 src/mailsender.py ${sender} ${passw} ${reciver}
+        exit;;
+    \?)
+        echo "bad option, help : -h"
+        exit;;
+    esac
+done
+
+
+
+# if [ $# = 0 ]
+# then
+#     helper
+# elif [ $# = 1 ]
+# then
+#     if [ "$1" = "audit" ]
+#     then
+#         audit 2>&1 | tee -a data/log
+#     elif [ "$1" = "update" ]
+#     then
+#         echo "Updating"
+#     else
+#         echo "bad option, try ./Urnis.sh"
+#     fi 
+# elif [ $# = 2 ]
+# then
+#     if [ "$1" = "audit" ]
+#     then
+#         if [ "$2" = "mail" ]
+#         then
+#             audit 2>&1 | tee -a data/log
+#             sudo python3 src/mailsender.py ${sender} ${passw} ${reciver}
+#         else
+#             echo "bad option, try ./Urnis.sh"
+#         fi
+#     else
+#         echo "bad option, try ./Urnis.sh"
+#     fi
+# else 
+#     echo "bad option, try ./Urnis.sh"   
+# fi
