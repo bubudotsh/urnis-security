@@ -1,7 +1,21 @@
 
-# Epitool
+# Urnis
 
-Auto compliation and norm check
+Urnis is a script that performs a security audit of your system.
+
+
+## Function
+    - Detect malware by scan files
+    - Recommendation of programs and actions for better security
+    - Update your system
+    - Generation of a security audit
+    - Send a security audit by mail
+    - report user with empty password
+    - report user with admin right
+    - report open port
+    - list of admin services
+    - firewall status
+    - software and hardware information of your system
 
 
 ## Installation
@@ -9,25 +23,34 @@ Auto compliation and norm check
 git clone this repo
 
 ```bash
-  ./install.sh
+  chmod +x setup.sh
+  ./setup.sh
 ```
-    
-this scipt add an alias in your bashrc and zshrc (if your have)
+
+Configuration of urnis
+
+```bash
+/usr/share/urnis/src/urnis.conf
+```
+
+
 ## Usage/Examples
 
 ```bash
     Options : 
-        -t      loop time in second 
-        -h      Help
+        -a      audit        make audit of your system
+        -u      update       update of Urnis
+        -l      look         generation of an audit every 12 hours automatically
+        -m      audit mail   make audit of your system and send it by email
 
     Usage :
-        epitool -t 5
+        urnis -a
 ```
 
 ## Update
 
 ```bash
-  epitool -u
+  urnis -u
 ```
 
 
