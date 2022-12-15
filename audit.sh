@@ -11,6 +11,8 @@ NC='\033[0m'
 sender=$(grep mailsender src/urnis.conf | cut -c 13- | sed 's/"//g')
 passw=$(grep password src/urnis.conf | cut -c 10- | sed 's/"//g')
 reciver=$(grep mailreciver src/urnis.conf | cut -c 13- | sed 's/"//g')
+tim=$(grep timet src/urnis.conf | cut -c 7- | sed 's/"//g')
+
 
 
 helper () {
@@ -172,7 +174,16 @@ audit () {
     cat data/audit
 }
 
-while getopts "huam" option; do
+look () {
+    timm=$(($tim * 3600))
+    while true; do
+        audit >> data/log
+        sudo python3 src/mailsender.py ${sender} ${passw} ${reciver}
+        sleep $timm
+    done
+}
+
+while getopts "huamlt" option; do
 case $option in
     h)
         helper
@@ -186,6 +197,9 @@ case $option in
     m)
         audit 2>&1 | tee -a data/log
         sudo python3 src/mailsender.py ${sender} ${passw} ${reciver}
+        exit;;
+    t)
+        look
         exit;;
     \?)
         echo "bad option, help : -h"
