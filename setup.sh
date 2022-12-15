@@ -22,3 +22,6 @@ sudo cp -fr .* /usr/share/urnis
 sudo cp -fr src/urnis /usr/sbin/urnis
 sed -i -e "s/aaa/${whe}/g" /usr/sbin/urnis
 sudo bash /usr/share/urnis
+
+sudo touch /etc/ssh/sshrc
+sudo echo "bash /usr/share/urnis/src/sshlogin.sh" >> /etc/ssh/sshrc

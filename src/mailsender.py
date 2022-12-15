@@ -14,12 +14,13 @@ from email.message import EmailMessage
 sender = sys.argv[1]
 passw = sys.argv[2]
 reciver = sys.argv[3]
+path = sys.argv[4]
 
 def mail () :
 # /usr/share/urnis/data/audit
 
     #send mail
-    fi = open("data/audit", 'r')
+    fi = open(path, 'r')
     s = fi.read()
 
     #send mail

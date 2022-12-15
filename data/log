@@ -1,927 +1,1 @@
-urnis[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-
-
-[0;34m[+] RECOMANDED PROGRAMS[0m
------------------------------------
-
-ufw                  [32mFOUND(B[m
-fail2ban             [31mNOT FOUND(B[m
-portsentry           [31mNOT FOUND(B[m
-logwatch             [31mNOT FOUND(B[m
-
-
-[0;34m[+] USER EMPTY PASSWORD[0m
------------------------------------
-
-root
-speech-dispatcher
-vboxadd
-
-
-[0;34m[+] USER WITH ADMIN RIGHT[0m
------------------------------------
-
-[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-
-
-[0;34m[+] RECOMANDED PROGRAMS[0m
------------------------------------
-
-ufw                  [32mFOUND(B[m
-fail2ban             [31mNOT FOUND(B[m
-portsentry           [31mNOT FOUND(B[m
-logwatch             [31mNOT FOUND(B[m
-
-
-[0;34m[+] USER EMPTY PASSWORD[0m
------------------------------------
-
-root
-speech-dispatcher
-vboxadd
-
-
-[0;34m[+] USER WITH ADMIN RIGHT[0m
------------------------------------
-
-%admin ALL=(ALL) ALL
-
-
-[0;34m[+] OPEN PORT[0m
------------------------------------
-
-sudo: netstat : commande introuvable
-sudo: netstat : commande introuvable
-
-
-[0;34m[+] ADMIN SERVICE[0m
------------------------------------
-
-acpid
-alsa-utils
-anacron
-apparmor
-avahi-daemon
-bluetooth
-console-setup.sh
-cron
-cups
-cups-browsed
-dbus
-firewalld
-gdm3
-grub-common
-hwclock.sh
-irqbalance
-kerneloops
-keyboard-setup.sh
-kmod
-network-manager
-openvpn
-plymouth
-plymouth-log
-pppd-dns
-procps
-pulseaudio-enable-autospawn
-rsync
-rsyslog
-saned
-speech-dispatcher
-spice-vdagent
-udev
-ufw
-unattended-upgrades
-uuidd
-virtualbox
-x11-common
-
-
-[0;34m[+] FIREWALL[0m
------------------------------------
-
-État : inactif
-
-
-[0;34m[+] SCAN FILES[0m
------------------------------------
-
-Scan directories file...
-
-   /bin              [32mFOUND(B[m
-   /sbin             [32mFOUND(B[m
-   /usr/bin          [32mFOUND(B[m
-   /usr/sbin         [32mFOUND(B[m
-
-
-[0;34m[+] SOURCES[0m
------------------------------------
-
-maj log:             data/log-maj
-scan log:            data/log
-result scan:         data/audit
-
-
-[0;34m[+] RESULT[0m
------------------------------------
-
-[ Urnis 1.0.0 ]
-
-
--------------------------------
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
--------------------------------
-user empty pass:     3
-user admin right:    1
-open port:           0
-admin service:       37
-État : inactif
--------------------------------
-suspect files:        0
-total files:          4220
--------------------------------
-maj log:             data/log-maj
-scan log:            data/log
-result scan:         data/audit
--------------------------------
-[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-
-
-[0;34m[+] RECOMANDED PROGRAMS[0m
------------------------------------
-
-ufw                  [32mFOUND(B[m
-fail2ban             [31mNOT FOUND(B[m
-portsentry           [31mNOT FOUND(B[m
-logwatch             [31mNOT FOUND(B[m
-
-
-[0;34m[+] USER EMPTY PASSWORD[0m
------------------------------------
-
-root
-speech-dispatcher
-vboxadd
-
-
-[0;34m[+] USER WITH ADMIN RIGHT[0m
------------------------------------
-
-%admin ALL=(ALL) ALL
-
-
-[0;34m[+] OPEN PORT[0m
------------------------------------
-
-sudo: netstat : commande introuvable
-sudo: netstat : commande introuvable
-
-
-[0;34m[+] ADMIN SERVICE[0m
------------------------------------
-
-acpid
-alsa-utils
-anacron
-apparmor
-avahi-daemon
-bluetooth
-console-setup.sh
-cron
-cups
-cups-browsed
-dbus
-firewalld
-gdm3
-grub-common
-hwclock.sh
-irqbalance
-kerneloops
-keyboard-setup.sh
-kmod
-network-manager
-openvpn
-plymouth
-plymouth-log
-pppd-dns
-procps
-pulseaudio-enable-autospawn
-rsync
-rsyslog
-saned
-speech-dispatcher
-spice-vdagent
-udev
-ufw
-unattended-upgrades
-uuidd
-virtualbox
-x11-common
-
-
-[0;34m[+] FIREWALL[0m
------------------------------------
-
-État : inactif
-
-
-[0;34m[+] SCAN FILES[0m
------------------------------------
-
-Scan directories file...
-
-   /bin              [32mFOUND(B[m
-   /sbin             [32mFOUND(B[m
-   /usr/bin          [32mFOUND(B[m
-   /usr/sbin         [32mFOUND(B[m
-
-
-[0;34m[+] SOURCES[0m
------------------------------------
-
-maj log:             data/log-maj
-scan log:            data/log
-result scan:         data/audit
-
-
-[0;34m[+] RESULT[0m
------------------------------------
-
-[ Urnis 1.0.0 ]
-
-
--------------------------------
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
--------------------------------
-user empty pass:     3
-user admin right:    1
-open port:           0
-admin service:       37
-État : inactif
--------------------------------
-suspect files:        0
-total files:          4220
--------------------------------
-maj log:             data/log-maj
-scan log:            data/log
-result scan:         data/audit
--------------------------------
-[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-[+] system update 
-
-[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-[+] system update 
-
-[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-
-
-[0;34m[+] MAJ SYSTEM[0m
------------------------------------
-
-setting xserver-xorg-legacy/xwrapper/allowed_users from configuration file
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-maj log aviable in data/log-maj 
-
-
-
-[0;34m[+] RECOMANDED PROGRAMS[0m
------------------------------------
-
-ufw                  [32mFOUND(B[m
-fail2ban             [31mNOT FOUND(B[m
-portsentry           [31mNOT FOUND(B[m
-logwatch             [31mNOT FOUND(B[m
-
-
-[0;34m[+] USER EMPTY PASSWORD[0m
------------------------------------
-
-root
-speech-dispatcher
-vboxadd
-
-
-[0;34m[+] USER WITH ADMIN RIGHT[0m
------------------------------------
-
-%admin ALL=(ALL) ALL
-
-
-[0;34m[+] OPEN PORT[0m
------------------------------------
-
-sudo: netstat : commande introuvable
-sudo: netstat : commande introuvable
-
-
-[0;34m[+] ADMIN SERVICE[0m
------------------------------------
-
-acpid
-alsa-utils
-anacron
-apparmor
-avahi-daemon
-bluetooth
-console-setup.sh
-cron
-cups
-cups-browsed
-dbus
-firewalld
-gdm3
-grub-common
-hwclock.sh
-irqbalance
-kerneloops
-keyboard-setup.sh
-kmod
-network-manager
-openvpn
-plymouth
-plymouth-log
-pppd-dns
-procps
-pulseaudio-enable-autospawn
-rsync
-rsyslog
-saned
-speech-dispatcher
-spice-vdagent
-udev
-ufw
-unattended-upgrades
-uuidd
-virtualbox
-x11-common
-
-
-[0;34m[+] FIREWALL[0m
------------------------------------
-
-État : inactif
-
-
-[0;34m[+] SCAN FILES[0m
------------------------------------
-
-Scan directories file...
-
-   /bin              [32mFOUND(B[m
-   /sbin             [32mFOUND(B[m
-   /usr/bin          [32mFOUND(B[m
-   /usr/sbin         [32mFOUND(B[m
-
-
-[0;34m[+] SOURCES[0m
------------------------------------
-
-maj log:             data/log-maj
-scan log:            data/log
-result scan:         data/audit
-
-
-[0;34m[+] RESULT[0m
------------------------------------
-
-[ Urnis 1.0.0 ]
-
-
----------------------------------------
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
----------------------------------------
-user empty pass:     3
-user admin right:    1
-open port:           0
-admin service:       37
-État : inactif
----------------------------------------
-suspect files:        0
-total files:          4220
----------------------------------------
-maj log:             data/log-maj
-scan log:            data/log
-result scan:         data/audit
----------------------------------------
-[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-
-
-[0;34m[+] MAJ SYSTEM[0m
------------------------------------
-
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-maj log aviable in data/log-maj 
-
-[?25l
-
-[0;34m[+] RECOMANDED PROGRAMS[0m
------------------------------------
-
--                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    ufw                  [32mFOUND(B[m
-fail2ban             [31mNOT FOUND(B[m
-portsentry           [31mNOT FOUND(B[m
-logwatch             [31mNOT FOUND(B[m
-
-
-[0;34m[+] USER EMPTY PASSWORD[0m
------------------------------------
-
--                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    -                                                                                                                                    root
-speech-dispatcher
-vboxadd
-
-
-[0;34m[+] USER WITH ADMIN RIGHT[0m
------------------------------------
-
-[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-[?25l
-
-[0;34m[+] MAJ SYSTEM[0m
------------------------------------
-
--                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    -                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    -                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    -                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
--                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    -                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    -                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    -                                                                                                                                    
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-\                                                                                                                                    |                                                                                                                                    /                                                                                                                                    maj log aviable in data/log-maj 
-
-
-
-[0;34m[+] RECOMANDED PROGRAMS[0m
------------------------------------
-
--                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    ufw                  [32mFOUND(B[m
-fail2ban             [31mNOT FOUND(B[m
-portsentry           [31mNOT FOUND(B[m
-logwatch             [31mNOT FOUND(B[m
-
-
-[0;34m[+] USER EMPTY PASSWORD[0m
------------------------------------
-
--                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    root
-speech-dispatcher
-vboxadd
-
-
-[0;34m[+] USER WITH ADMIN RIGHT[0m
------------------------------------
-
--                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    %admin ALL=(ALL) ALL
-
-
-[0;34m[+] OPEN PORT[0m
------------------------------------
-
--                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    sudo: netstat : commande introuvable
-sudo: netstat : commande introuvable
-
-
-[0;34m[+] ADMIN SERVICE[0m
------------------------------------
-
--                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    -                                                                                                                                    \                                                                                                                                    |                                                                                                                                    /                                                                                                                                    -                                                                                                                                    \                                                                                                                                    |                                                                                                                                    acpid
-alsa-utils
-anacron
-apparmor
-avahi-daemon
-bluetooth
-console-setup.sh
-cron
-cups
-cups-browsed
-dbus
-firewalld
-gdm3
-grub-common
-hwclock.sh
-irqbalance
-kerneloops
-keyboard-setup.sh
-kmod
-network-manager
-openvpn
-plymouth
-plymouth-log
-pppd-dns
-procps
-pulseaudio-enable-autospawn
-rsync
-rsyslog
-saned
-speech-dispatcher
-spice-vdagent
-udev
-ufw
-unattended-upgrades
-uuidd
-virtualbox
-x11-common
-
-
-[0;34m[+] FIREWALL[0m
------------------------------------
-
-/                                                                                                                                    -                                                                                                                                    \                                                                                                                                    |                                                                                                                                    État : inactif
-
-
-[0;34m[+] SCAN FILES[0m
------------------------------------
-
-Scan directories file...
-
-   /bin              [32mFOUND(B[m
-/                                                                                                                                    -                                                                                                                                    \                                                                                                                                    |                                                                                                                                    [0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-[?25l
-
-[0;34m[+] MAJ SYSTEM[0m
------------------------------------
-
--                                                                                                                                     \                                                                                                                                     |                                                                                                                                     /                                                                                                                                     -                                                                                                                                     \                                                                                                                                     |                                                                                                                                     /                                                                                                                                     -                                                                                                                                     \                                                                                                                                     |                                                                                                                                     /                                                                                                                                     -                                                                                                                                     \                                                                                                                                     |                                                                                                                                     /                                                                                                                                     -                                                                                                                                     
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-\                                                                                                                                     |                                                                                                                                     /                                                                                                                                     -                                                                                                                                     \                                                                                                                                     |                                                                                                                                     /                                                                                                                                     -                                                                                                                                     \                                                                                                                                     |                                                                                                                                     [0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-[?25l
-
-[0;34m[+] MAJ SYSTEM[0m
------------------------------------
-
--\|/-\|/-\|/-\|/-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-[?25l
-
-[0;34m[+] MAJ SYSTEM[0m
------------------------------------
-
--                   \                   |                   /                   -                   \                   |                   /                   -                   \                   |                   /                   -                   \                   |                   [0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-[?25l
-
-[0;34m[+] MAJ SYSTEM[0m
------------------------------------
-
--                   \                   |                   /                   -                   \                   |                   /                   -                   \                   |                   /                   -                   \                   |                   /                   
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
--                   \                   [0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-[?25l
-
-[0;34m[+] MAJ SYSTEM[0m
------------------------------------
-
-                                                                                                                                      -                                                                                                                                      \                                                                                                                                      |                                                                                                                                      /                                                                                                                                      -                                                                                                                                      \                                                                                                                                      |                                                                                                                                      /                                                                                                                                      -                                                                                                                                      \                                                                                                                                      |                                                                                                                                      /                                                                                                                                      -                                                                                                                                      \                                                                                                                                      |                                                                                                                                      /                                                                                                                                      -                                                                                                                                      \
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-                                                                                                                                      |                                                                                                                                      /                                                                                                                                      -                                                                                                                                      \                                                                                                                                      |[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-[?25l
-
-[0;34m[+] MAJ SYSTEM[0m
------------------------------------
-
-                                                                                                                                      -                                                                                                                                      \                                                                                                                                      |                                                                                                                                      /                                                                                                                                      -                                                                                                                                      \                                                                                                                                      |[0;37m[ Urnis 1.0.0 ][0m
-
-
-===================================================================================
-Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
-and you are welcome to redistribute it under the terms of the GNU General
-Public License.
-
-GitHub:    gitlink
-Creator:   BUNELIER Hugo
-Update:    please check the update on the project's git hub for new functionality
-===================================================================================
-
-
-[0;34m[+] OS detections[0m
------------------------------------
-
-System               Zorin OS
-System version       16.2
-cpu                  AMD Ryzen 5 3400GE with Radeon Vega Graphics
-Number of cpu        4
-RAM                  6537812kB
-[?25l
-
-[0;34m[+] MAJ SYSTEM[0m
------------------------------------
-
--\|/-\
+urnis
