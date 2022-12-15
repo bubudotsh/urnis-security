@@ -29,13 +29,15 @@ git clone this repo
 
 ```bash
   chmod +x setup.sh
-  ./setup.sh
+  sudo ./setup.sh
 ```
+After running the setup you can delete the "urnis-security" directory
+
 
 Configuration of urnis
 
 ```bash
-/usr/share/urnis/src/urnis.conf
+sudo vim /usr/share/urnis/src/urnis.conf
 ```
 
 
@@ -47,6 +49,7 @@ Configuration of urnis
         -u      update       update of Urnis
         -l      look         generation of an audit every 12 hours automatically
         -m      audit mail   make audit of your system and send it by email
+        -r      remove       remove all files of urnis
 
     Usage :
         sudo urnis -a

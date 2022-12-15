@@ -32,6 +32,7 @@ helper () {
     printf "%-20s %-20s %s\n" "       -u" "update" "update of Urnis"
     printf "%-20s %-20s %s\n" "       -l" "look" "generation of an audit every 12 hours automatically"
     printf "%-20s %-20s %s\n" "       -m" "audit mail" "make audit of your system and send it by email"
+    printf "%-20s %-20s %s\n" "       -r" "remove" "remove all files of urnis"
 
     echo -e "\n   ${BLEU}Author${NC}"
     printf "%-20s %s\n" "       github" "https://github.com/bubudotsh/urnis-secutity"
@@ -188,7 +189,16 @@ look () {
     done
 }
 
-while getopts "huamlt" option; do
+remove () {
+    echo "Are you sure you want to remove [y/n]"
+    read remove_rep
+    if [ "$remove_rep" = "y" ]; then
+        sudo rm -fr /usr/share/urnis
+        sudo rm -fr /etc/ssh/sshrc
+        sudo rm -fr /usr/sbin/urnis
+}
+
+while getopts "huamltr" option; do
 case $option in
     h)
         helper
@@ -205,6 +215,9 @@ case $option in
         exit;;
     t)
         look
+        exit;;
+    r)
+        remove
         exit;;
     \?)
         echo "bad option, help : -h"

@@ -26,7 +26,7 @@ def mail () :
     msg = MIMEMultipart()
     msg['From'] = sender
     msg['To'] = reciver
-    msg['Subject'] = 'ssh new connexion'  
+    msg['Subject'] = 'Urnis'  
     message = s
     msg.attach(MIMEText(message))
     mailserver = smtplib.SMTP('smtp-mail.outlook.com', 587)
