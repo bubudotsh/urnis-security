@@ -27,7 +27,7 @@ helper () {
     echo -e "   ${BLEU}Usage${NC}"
     echo -e "       sudo urnis OPTION"
 
-    echo -e "\n   ${BLEU}Option${NC}"
+    echo -e "\n\n   ${BLEU}Option${NC}"
     printf "%-20s %-20s %s\n" "       -a" "audit" "make audit of your system"
     printf "%-20s %-20s %s\n" "       -h" "help" "usage of urnis"
     printf "%-20s %-20s %s\n" "       -u" "update" "update of Urnis"
@@ -36,7 +36,13 @@ helper () {
     printf "%-20s %-20s %s\n" "       -r" "remove" "remove all files of urnis"
     printf "%-20s %-20s %s\n" "       -k" "kill look" "kill look mode process"
 
-    echo -e "\n   ${BLEU}Author${NC}"
+    echo -e "\n\n   ${BLEU}Configuration${NC}"
+    printf "%-41s %s\n" "       Configure mail" "/usr/share/urnis/src/urnis.conf"
+    printf "%-41s %-20s %s\n" "       Add programs to check" "/usr/share/urnis/src/pro.txt"
+    printf "%-41s %-20s %s\n" "       Add directories to check" "/usr/share/urnis/src/dir.txt"
+
+
+    echo -e "\n\n   ${BLEU}Author${NC}"
     printf "%-20s %s\n" "       github" "https://github.com/bubudotsh/urnis-secutity"
     printf "%-20s %s\n" "       developper" "BUNELIER Hugo"
     echo -e "\n"
