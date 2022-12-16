@@ -199,7 +199,16 @@ remove () {
     fi
 }
 
-while getopts "huamltr" option; do
+kills () {
+    sudo ps -a | grep 'urnis' | awk '{print $1}' > /usr/share/urnis/data/ki.txt
+    file_path="/usr/share/urnis/data/ki.txt"
+    while read -r line; do
+        sudo kill -9 $line
+    done < "$file_path"
+    sudo rm -fr /usr/share/urnis/data/ki.txt
+}
+
+while getopts "huamlrk" option; do
 case $option in
     h)
         helper
@@ -214,8 +223,11 @@ case $option in
         audit 2>&1 | tee -a ${pathlog}
         sudo python3 src/mailsender.py ${sender} ${passw} ${reciver} ${pathfilemail}
         exit;;
-    t)
-        look > /dev/null
+    l)
+        look > /dev/null 2> /dev/null
+        exit;;
+    k)
+        kills
         exit;;
     r)
         remove
