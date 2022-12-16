@@ -34,7 +34,10 @@ git clone this repo
 After running the setup you can delete the "urnis-security" directory
 
 
-Configuration of urnis
+
+## Configuring
+
+Configure mail and scan dir
 
 ```bash
 sudo vim /usr/share/urnis/src/urnis.conf
@@ -45,11 +48,13 @@ sudo vim /usr/share/urnis/src/urnis.conf
 
 ```bash
     Options : 
+        -h      help         help of urnis
         -a      audit        make audit of your system
         -u      update       update of Urnis
         -l      look         generation of an audit every 12 hours automatically
         -m      audit mail   make audit of your system and send it by email
         -r      remove       remove all files of urnis
+        -k      kill         stop look mode of urnis
 
     Usage :
         sudo urnis -a
