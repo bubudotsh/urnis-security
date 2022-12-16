@@ -17,7 +17,7 @@ echo -e "[ Urnis setup ]\n\n"
 
 if [ -d ${pathd} ]; then
     sudo mkdir ${pathd}/urnis
-    sudo cp .* ${pathd}/urnis/
+    sudo cp -fr .* ${pathd}/urnis/
 else
     echo -e "${pathd} not found"
     exit
