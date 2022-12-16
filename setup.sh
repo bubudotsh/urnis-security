@@ -34,19 +34,19 @@ else
     exit
 fi
 
-if [ -d "/etc/ssh" ];then
-    if [ -f "/etc/ssh/sshrc" ];then
-        mkdir ~/.urnis
-        cp -fr src/.urnis/* ~/.urnis/
-        echo "bash ~/.urnis/sshlogin.sh" >> /etc/ssh/sshrc
-    else
-        mkdir ~/.urnis
-        cp -fr src/.urnis/* ~/.urnis/
-        echo "bash ~/.urnis/sshlogin.sh" > /etc/ssh/sshrc
-    fi
-else
-    echo "/etc/ssh not found!"
-fi
+# mkdir ~/.urnis
+# cp -fr src/.urnis/* ~/.urnis/
+# sudo chmod +x ~/.urnis/sshlogin.sh
+
+# if [ -d "/etc/ssh" ];then
+#     if [ -f "/etc/ssh/sshrc" ];then
+#         echo "bash ~/.urnis/sshlogin.sh" >> /etc/ssh/sshrc
+#     else
+#         echo "bash ~/.urnis/sshlogin.sh" > /etc/ssh/sshrc
+#     fi
+# else
+#     echo "/etc/ssh not found!"
+# fi
 
 
 echo "Done, you can try sudo urnis -h"
