@@ -12,6 +12,7 @@ sender=$(sudo grep mailsender /usr/share/urnis/src/urnis.conf | cut -c 13- | sed
 passw=$(sudo grep password /usr/share/urnis/src/urnis.conf | cut -c 10- | sed 's/"//g')
 reciver=$(sudo grep mailreciver /usr/share/urnis/src/urnis.conf | cut -c 13- | sed 's/"//g')
 tim=$(sudo grep timet /usr/share/urnis/src/urnis.conf | cut -c 7- | sed 's/"//g')
+up=$(sudo grep aptupdate /usr/share/urnis/src/urnis.conf | cut -c 11- | sed 's/"//g')
 pathfilemail="/usr/share/urnis/data/audit"
 
 pathaudit="/usr/share/urnis/data/audit"
@@ -40,6 +41,7 @@ helper () {
     printf "%-41s %s\n" "       Configure mail" "/usr/share/urnis/src/urnis.conf"
     printf "%-41s %-20s %s\n" "       Add programs to check" "/usr/share/urnis/src/pro.txt"
     printf "%-41s %-20s %s\n" "       Add directories to check" "/usr/share/urnis/src/dir.txt"
+    printf "%-41s %-20s %s\n" "       Enable apt update in look mode" "/usr/share/urnis/src/urnis.conf"
 
 
     echo -e "\n\n   ${BLEU}Author${NC}"
@@ -49,9 +51,11 @@ helper () {
 }
 
 maj () {
-    echo -e "\n\n${BLEU}[+] MAJ SYSTEM${NC}\n-----------------------------------\n"
-    (sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt update -y && sudo apt upgrade -y) > /usr/share/urnis/data/log-maj
-    echo -e 'maj log aviable in /usr/share/urnis/data/log-maj \n'
+    if [ "${up}" = "enable" ]; then
+        echo -e "\n\n${BLEU}[+] MAJ SYSTEM${NC}\n-----------------------------------\n"
+        (sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt update -y && sudo apt upgrade -y) > /usr/share/urnis/data/log-maj
+        echo -e 'maj log aviable in /usr/share/urnis/data/log-maj \n'
+    fi
 }
 
 user_empty_password () {
@@ -63,16 +67,24 @@ user_empty_password () {
 
 user_with_admin_right () {
     echo -e "\n\n${BLEU}[+] USER WITH ADMIN RIGHT${NC}\n-----------------------------------\n"
-    sleep 1
-    printf "%-20s %s\n" "user admin right:" "$(sudo cat /etc/sudoers | grep '^%admin' | wc -l)" >> ${pathaudit}
-    sudo cat /etc/sudoers | grep '^%admin'
+    sleep 0.5
+    if [ -d "/etc/sudoers" ]; then
+        printf "%-20s %s\n" "user admin right:" "$(sudo cat /etc/sudoers | grep '^%admin' | wc -l)" >> ${pathaudit}
+        sudo cat /etc/sudoers | grep '^%admin'
+    else
+        echo "/etc/sudoers not found"
+    fi
 }
 
 open_port () {
     echo -e "\n\n${BLEU}[+] OPEN PORT${NC}\n-----------------------------------\n"
-    sleep 1
-    printf "%-20s %s\n" "open port:" "$(sudo netstat -tulpn | wc -l)" >> ${pathaudit}
-    sudo netstat -tulpn
+    sleep 0.7
+    if command -v netstat > /dev/null 2>&1; then
+        printf "%-20s %s\n" "open port:" "$(sudo netstat -tulpn | wc -l)" >> ${pathaudit}
+        sudo netstat -tulpn
+    else
+        echo "netstat not found"
+    fi
 }
 
 admin_service () {
@@ -84,8 +96,12 @@ admin_service () {
 
 firewall () {
     echo -e "\n\n${BLEU}[+] FIREWALL${NC}\n-----------------------------------\n"
-    sleep 1
-    echo -e "$(sudo ufw status)" 2>&1 | tee -a ${pathaudit}
+    sleep 0.5
+    if command -v ufw > /dev/null 2>&1; then
+        echo -e "$(sudo ufw status)" 2>&1 | tee -a ${pathaudit}
+    else
+        echo "ufw not found"
+    fi
 }
 
 scan () {
@@ -128,7 +144,7 @@ scan () {
 
 os_detections() {
     echo -e "${BLEU}[+] OS detections${NC}\n-----------------------------------\n"
-    sleep 1
+    sleep 0.5
     printf "%-20s %s\n" "System" "$(egrep '^(NAME)=' /etc/os-release | cut -c 7- | sed 's/"//g')" 2>&1 | sudo tee -a ${pathaudit}
     printf "%-20s %s\n" "System version" "$(egrep '^(VERSION)=' /etc/os-release | cut -c 9- | sed 's/"//g')" 2>&1 | sudo tee -a ${pathaudit}
     printf "%-20s %s\n" "cpu" "$(cat /proc/cpuinfo | grep -i "^model name" | awk -F": " '{print $2}' | head -1 | sudo sed 's/ \+/ /g')" 2>&1 | tee -a ${pathaudit}
@@ -138,7 +154,7 @@ os_detections() {
 
 prog () {
     echo -e "\n\n${BLEU}[+] RECOMANDED PROGRAMS${NC}\n-----------------------------------\n"
-    sleep 1
+    sleep 0.7
     file_path="/usr/share/urnis/src/pro.txt"
     while read -r line; do
         if command -v $line > /dev/null 2>&1; then
@@ -154,28 +170,55 @@ info () {
     echo -e "Urniscomes with ABSOLUTELY NO WARRANTY. This is free software,
 and you are welcome to redistribute it under the terms of the GNU General
 Public License.\n"
-    printf "%-10s %s\n" "GitHub:" "gitlink"
     printf "%-10s %s\n" "Creator:" "BUNELIER Hugo"
+    printf "%-10s %s\n" "GitHub:" "https://github.com/bubudotsh/urnis-security"
     printf "%-10s %s\n" "Update:" "please check the update on the project's git hub for new functionality"
     echo -e "===================================================================================\n\n"
 }
 
+last_login () {
+    echo -e "\n\n${BLEU}[+] LAST SSH LOGIN${NC}\n-----------------------------------\n"
+    sleep 1
+    sudo last -10
+}
+
+bootinfo () {
+    echo -e "\n\n${BLEU}[+] BOOT INFO${NC}\n-----------------------------------\n"
+    sleep 0.7
+    securebot=$(mokutil --sb-state)
+    bootefi=$(ls /sys/firmware/efi > /dev/null 2> /dev/null ; echo "$?")
+    if [ "$securebot" = "SecureBoot disabled" ]; then
+        printf "%-20s %s\n" "Secure Boot" "${red}DISABLE${normal}"
+    elif [ "$securebot" = "SecureBoot enabled" ]; then
+        printf "%-20s %s\n" "Secure Boot" "${green}ENABLED${normal}"
+    else
+        echo "${securebot}"
+    fi
+    if [ "$bootefi" = "0" ]; then
+        printf "%-20s %s\n" "efi boot" "${red}ENABLED${normal}"
+    else
+        printf "%-20s %s\n" "efi boot" "${green}DISABLE${normal}"
+    fi
+}
+
+
 audit () {
     echo -e "${LGREY}[ Urnis 1.0.0 ]${NC}\n\n"
     echo -e "[ Urnis 1.0.0 ]\n\n" > ${pathaudit}
-
     info
     sleep 2
     echo -e "---------------------------------------" >>${pathaudit}
     os_detections
+    bootinfo
     echo -e "---------------------------------------" >> ${pathaudit}
-    maj
     prog
     user_empty_password
     user_with_admin_right
     open_port
     admin_service
     firewall
+    echo -e "---------------------------------------" >>${pathaudit}
+    last_login
     echo -e "---------------------------------------" >>${pathaudit}
     scan
     echo -e "---------------------------------------" >> ${pathaudit}
@@ -189,6 +232,7 @@ audit () {
 }
 
 look () {
+    maj
     timm=$(($tim * 3600))
     while true; do
         audit >> ${pathlog}
@@ -216,13 +260,19 @@ kills () {
     sudo rm -fr /usr/share/urnis/data/ki.txt
 }
 
+update () {
+    echo "For update you can execute sudo urnis -r"
+    echo "git clone https://github.com/bubudotsh/urnis-security.git"
+    echo "run setup.sh and reconfigure urnis"
+}
+
 while getopts "huamlrk" option; do
 case $option in
     h)
         helper
         exit;;
     u)
-        echo "update"
+        update
         exit;;
     a)
         audit 2>&1 | tee -a ${pathlog}
@@ -245,3 +295,4 @@ case $option in
         exit;;
     esac
 done
+echo "bad option, try sudo urnis -h"
