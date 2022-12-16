@@ -247,6 +247,8 @@ remove () {
         sudo rm -fr /usr/share/urnis
         sudo rm -fr /etc/ssh/sshrc
         sudo rm -fr /usr/sbin/urnis
+        sudo rm -fr ~/.urnis
+        sudo rm -fr /etc/ssh/shrc
     fi
 }
 
