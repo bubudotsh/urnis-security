@@ -196,6 +196,7 @@ remove () {
         sudo rm -fr /usr/share/urnis
         sudo rm -fr /etc/ssh/sshrc
         sudo rm -fr /usr/sbin/urnis
+    fi
 }
 
 while getopts "huamltr" option; do
