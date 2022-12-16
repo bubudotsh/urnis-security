@@ -215,7 +215,7 @@ case $option in
         sudo python3 src/mailsender.py ${sender} ${passw} ${reciver} ${pathfilemail}
         exit;;
     t)
-        look
+        look > /dev/null
         exit;;
     r)
         remove
