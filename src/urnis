@@ -184,7 +184,7 @@ look () {
     timm=$(($tim * 3600))
     while true; do
         audit >> ${pathlog}
-        sudo python3 /usr/share/urnis/src/mailsender.py ${sender} ${passw} ${reciver}
+        sudo python3 /usr/share/urnis/src/mailsender.py ${sender} ${passw} ${reciver} ${pathfilemail}
         sleep $timm
     done
 }
