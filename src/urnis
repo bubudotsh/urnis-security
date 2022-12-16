@@ -68,7 +68,7 @@ user_empty_password () {
 user_with_admin_right () {
     echo -e "\n\n${BLEU}[+] USER WITH ADMIN RIGHT${NC}\n-----------------------------------\n"
     sleep 0.5
-    if [ -d "/etc/sudoers" ]; then
+    if [ -f "/etc/sudoers" ]; then
         printf "%-20s %s\n" "user admin right:" "$(sudo cat /etc/sudoers | grep '^%admin' | wc -l)" >> ${pathaudit}
         sudo cat /etc/sudoers | grep '^%admin'
     else
@@ -179,7 +179,7 @@ Public License.\n"
 last_login () {
     echo -e "\n\n${BLEU}[+] LAST SSH LOGIN${NC}\n-----------------------------------\n"
     sleep 1
-    sudo last -10
+    sudo last -5
 }
 
 bootinfo () {
@@ -195,9 +195,9 @@ bootinfo () {
         echo "${securebot}"
     fi
     if [ "$bootefi" = "0" ]; then
-        printf "%-20s %s\n" "efi boot" "${red}ENABLED${normal}"
+        printf "%-20s %s\n" "efi boot" "${green}ENABLED${normal}"
     else
-        printf "%-20s %s\n" "efi boot" "${green}DISABLE${normal}"
+        printf "%-20s %s\n" "efi boot" "${red}DISABLE${normal}"
     fi
 }
 
@@ -219,7 +219,6 @@ audit () {
     firewall
     echo -e "---------------------------------------" >>${pathaudit}
     last_login
-    echo -e "---------------------------------------" >>${pathaudit}
     scan
     echo -e "---------------------------------------" >> ${pathaudit}
     echo -e "\n\n${BLEU}[+] SOURCES${NC}\n-----------------------------------\n"
