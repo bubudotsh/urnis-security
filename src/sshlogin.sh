@@ -2,10 +2,12 @@ path="/usr/share/urnis/data/sshlogin"
 
 
 
-# personaliser dir scan
 # fiabilisation (verifier presance dossier...)
 # fix ssh login
 # fix cpu name
+# disk space
+# add web site monit server info
+# add date of scan in audit
 
 
 sender=$(sudo grep mailsender /usr/share/urnis/src/urnis.conf | cut -c 13- | sed 's/"//g')
