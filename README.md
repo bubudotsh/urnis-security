@@ -37,10 +37,20 @@ After running the setup you can delete the "urnis-security" directory
 
 ## Configuring
 
-Configure mail and scan dir
+Configure mail
 
 ```bash
 sudo vim /usr/share/urnis/src/urnis.conf
+```
+
+Add programs to check
+```bash
+sudo vim /usr/share/urnis/src/pro.txt
+```
+
+Add directories to check
+```bash
+sudo vim /usr/share/urnis/src/dir.txt
 ```
 
 
