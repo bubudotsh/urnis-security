@@ -234,6 +234,7 @@ look () {
     maj
     timm=$(($tim * 3600))
     while true; do
+        sudo sed -i -e 's/urnislstatus="0"/urnislstatus="1"/g' /usr/share/urnis/src/urnis.conf
         audit >> ${pathlog}
         sudo python3 /usr/share/urnis/src/mailsender.py ${sender} ${passw} ${reciver} ${pathfilemail}
         sleep $timm
@@ -257,12 +258,26 @@ kills () {
         sudo kill -9 $line
     done < "$file_path"
     sudo rm -fr /usr/share/urnis/data/ki.txt
+    sudo sed -i -e 's/urnislstatus="1"/urnislstatus="0"/g' /usr/share/urnis/src/urnis.conf
 }
 
 update () {
     echo "For update you can execute sudo urnis -r"
     echo "git clone https://github.com/bubudotsh/urnis-security.git"
     echo "run setup.sh and reconfigure urnis"
+}
+
+status () {
+    echo -e "\n\n${BLEU}[+] URNIS LOOK STATUS${NC}\n-----------------------------------\n"
+    lookstatus=$(grep urnislstatus /usr/share/urnis/src/urnis.conf | cut -c 14- | sed 's/"//g'
+    if [ "${lookstatus}" = "0" ]; then
+        echo "NOT RUN"
+    elif [ "${lookstatus}" = "1"]; then
+        echo "RUNNING"
+    else
+        echo "error"
+    fi
+)
 }
 
 while getopts "huamlrk" option; do
@@ -288,6 +303,9 @@ case $option in
         exit;;
     r)
         remove
+        exit;;
+    s)
+        status
         exit;;
     \?)
         echo "bad option, help : -h"
