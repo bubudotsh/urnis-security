@@ -101,10 +101,12 @@ admin_service () {
 firewall () {
     echo -e "\n\n${BLEU}[+] FIREWALL${NC}\n-----------------------------------\n"
     sleep 0.5
+    ufwcm=$(sudo ufw status)
     if command -v ufw > /dev/null 2>&1; then
         echo -e "$(sudo ufw status)" 2>&1 | tee -a ${pathaudit}
-        if [ "$(sudo ufw status)" =  "Status: inactive" || "$(sudo ufw status)" =  "État : inactif" ]; then
+        if [ "${ufwcm}" = "Status: inactive" ] || [ "${ufwcm}" = "État : inactif" ]; then
             echo -e "* Active ufw" >> ${pathreco}
+        fi
     else
         echo "ufw not found" 2>&1 | tee -a ${pathaudit}
     fi
