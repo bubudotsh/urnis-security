@@ -114,12 +114,12 @@ firewall () {
     if command -v iptables > /dev/null 2>&1; then
         iptablesst=$(sudo iptables -L | grep INPUT)
         if [ "${iptablesst}" = "Chain INPUT (policy ACCEPT)" ];then
-            printf "%-40s %s\n" " iptables INPUT" "${red}ACCES${normal}" 2>&1 | tee -a ${pathaudit}
+            printf "%-20s %s\n" "Iptables INPUT" "${red}ACCES${normal}" 2>&1 | tee -a ${pathaudit}
             echo -e "* Switch to DROP and create yours ruls" >> ${pathreco}
         elif [ "${iptablesst}" = "Chain INPUT (policy DROP)" ]; then
-            printf "%-40s %s\n" " iptables INPUT" "${green}DROP${normal}" 2>&1 | tee -a ${pathaudit}
+            printf "%-20s %s\n" " iptables INPUT" "${green}DROP${normal}" 2>&1 | tee -a ${pathaudit}
         else
-            printf "%-40s %s\n" " iptables INPUT" "${green}CUSTOM${normal}" 2>&1 | tee -a ${pathaudit}
+            printf "%-20s %s\n" " iptables INPUT" "${green}CUSTOM${normal}" 2>&1 | tee -a ${pathaudit}
         fi
     else
         echo "iptables not found" 2>&1 | tee -a ${pathaudit}
@@ -228,7 +228,7 @@ bootinfo () {
 
 reco () {
     echo -e "\n\n${BLEU}[+] RECOMMANDATION${NC}\n-----------------------------------\n"
-    sudo cat /usr/share/urnis/data/recommandation.txt
+    sudo cat /usr/share/urnis/src/recommandation.txt
 }
 
 
