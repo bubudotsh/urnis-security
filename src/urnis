@@ -13,10 +13,12 @@ passw=$(sudo grep password /usr/share/urnis/src/urnis.conf | cut -c 10- | sed 's
 reciver=$(sudo grep mailreciver /usr/share/urnis/src/urnis.conf | cut -c 13- | sed 's/"//g')
 tim=$(sudo grep timet /usr/share/urnis/src/urnis.conf | cut -c 7- | sed 's/"//g')
 up=$(sudo grep aptupdate /usr/share/urnis/src/urnis.conf | cut -c 11- | sed 's/"//g')
+date=$(date)
 pathfilemail="/usr/share/urnis/data/audit"
 
 pathaudit="/usr/share/urnis/data/audit"
 pathlog="/usr/share/urnis/data/log"
+pathreco="/usr/share/urnis/src/recommandation.txt"
 
 
 helper () {
@@ -29,13 +31,15 @@ helper () {
     echo -e "       sudo urnis OPTION"
 
     echo -e "\n\n   ${BLEU}Option${NC}"
+    printf "%-20s %-20s %s\n" "       OPTION" "NAME" "DESCRIPTION"
     printf "%-20s %-20s %s\n" "       -a" "audit" "make audit of your system"
     printf "%-20s %-20s %s\n" "       -h" "help" "usage of urnis"
     printf "%-20s %-20s %s\n" "       -u" "update" "update of Urnis"
-    printf "%-20s %-20s %s\n" "       -l" "look" "generation of an audit every 12 hours automatically"
+    printf "%-20s %-20s %s\n" "       -l &" "look" "generation of an audit every 12 hours automatically"
     printf "%-20s %-20s %s\n" "       -m" "audit mail" "make audit of your system and send it by email"
     printf "%-20s %-20s %s\n" "       -r" "remove" "remove all files of urnis"
     printf "%-20s %-20s %s\n" "       -k" "kill look" "kill look mode process"
+    printf "%-20s %-20s %s\n" "       -s" "status" "status of look mode"
 
     echo -e "\n\n   ${BLEU}Configuration${NC}"
     printf "%-41s %s\n" "       Configure mail" "/usr/share/urnis/src/urnis.conf"
@@ -99,8 +103,25 @@ firewall () {
     sleep 0.5
     if command -v ufw > /dev/null 2>&1; then
         echo -e "$(sudo ufw status)" 2>&1 | tee -a ${pathaudit}
+        if [ "$(sudo ufw status)" =  "Status: inactive" || "$(sudo ufw status)" =  "État : inactif"]; then
+            echo -e "* Active ufw" >> ${pathreco}
     else
-        echo "ufw not found"
+        echo "ufw not found" 2>&1 | tee -a ${pathaudit}
+    fi
+
+    if command -v iptables > /dev/null 2>&1; then
+        iptablesst=$(sudo iptables -L | grep INPUT)
+        if [ "${iptablesst}" = "Chain INPUT (policy ACCEPT)" ];then
+            printf "%-40s %s\n" " iptables INPUT" "${red}ACCES${normal}" 2>&1 | tee -a ${pathaudit}
+            echo -e "* Switch to DROP and create yours ruls" >> ${pathreco}
+        elif [ "${iptablesst}" = "Chain INPUT (policy DROP)" ]
+        then
+            printf "%-40s %s\n" " iptables INPUT" "${green}DROP${normal}" 2>&1 | tee -a ${pathaudit}
+        else
+            printf "%-40s %s\n" " iptables INPUT" "${green}CUSTOM${normal}" 2>&1 | tee -a ${pathaudit}
+        fi
+    else
+        echo "iptables not found" 2>&1 | tee -a ${pathaudit}
     fi
 }
 
@@ -127,7 +148,8 @@ scan () {
                     if [ -z "$match" ]; then
                         ((total_file=total_file+1))
                     else
-                        printf "%-60s %s\n" " $file" "SUSPECT" >> ${pathlog} 2>> ${pathlog}
+                        printf "%-60s %s\n" " $file" "${red}SUSPECT${normal}" >> ${pathlog} 2>> ${pathlog}
+                        echo -e "* Check $file possibility of malware" >> ${pathreco}
                         ((suspect_file=suspect_file+1))
                     fi
                 fi
@@ -161,6 +183,7 @@ prog () {
             printf "%-20s %s\n" "$line" "${green}FOUND${normal}"
         else
             printf "%-20s %s\n" "$line" "${red}NOT FOUND${normal}"
+            echo -e "* Install ${line}" >> ${pathreco}
         fi
     done < "$file_path"
 }
@@ -189,7 +212,9 @@ bootinfo () {
     bootefi=$(ls /sys/firmware/efi > /dev/null 2> /dev/null ; echo "$?")
     if [ "$securebot" = "SecureBoot disabled" ]; then
         printf "%-20s %s\n" "Secure Boot" "${red}DISABLE${normal}"
-    elif [ "$securebot" = "SecureBoot enabled" ]; then
+        echo -e "* Active secure boot" >> ${pathreco}
+    elif [ "$securebot" = "SecureBoot enabled" ]
+    then
         printf "%-20s %s\n" "Secure Boot" "${green}ENABLED${normal}"
     else
         echo "${securebot}"
@@ -199,6 +224,11 @@ bootinfo () {
     else
         printf "%-20s %s\n" "efi boot" "${red}DISABLE${normal}"
     fi
+}
+
+reco () {
+    echo -e "\n\n${BLEU}[+] RECOMMANDATION${NC}\n-----------------------------------\n"
+    sudo cat /usr/share/urnis/data/recommandation.txt
 }
 
 
@@ -220,12 +250,14 @@ audit () {
     echo -e "---------------------------------------" >>${pathaudit}
     last_login
     scan
+    reco
     echo -e "---------------------------------------" >> ${pathaudit}
     echo -e "\n\n${BLEU}[+] SOURCES${NC}\n-----------------------------------\n"
     printf "%-20s %s\n" "maj log:" "/usr/share/urnis/data/log-maj" 2>&1 | tee -a ${pathaudit}
     printf "%-20s %s\n" "scan log:" "${pathlog}" 2>&1 | tee -a ${pathaudit}
     printf "%-20s %s\n" "result scan:" "${pathaudit}" 2>&1 | tee -a ${pathaudit}
     echo -e "---------------------------------------" >> ${pathaudit}
+    echo -e "${date}" >> ${pathaudit}
     echo -e "\n\n${BLEU}[+] RESULT${NC}\n-----------------------------------\n"
     cat ${pathaudit}
 }
@@ -235,7 +267,7 @@ look () {
     timm=$(($tim * 3600))
     while true; do
         sudo sed -i -e 's/urnislstatus="0"/urnislstatus="1"/g' /usr/share/urnis/src/urnis.conf
-        audit >> ${pathlog}
+        audit > ${pathlog}
         sudo python3 /usr/share/urnis/src/mailsender.py ${sender} ${passw} ${reciver} ${pathfilemail}
         sleep $timm
     done
@@ -246,7 +278,7 @@ remove () {
     read remove_rep
     if [ "$remove_rep" = "y" ]; then
         sudo rm -fr /usr/share/urnis
-        sudo rm -fr /etc/ssh/sshrc
+        echo -e "remove sucessfully"
         sudo rm -fr /usr/sbin/urnis
     fi
 }
@@ -272,7 +304,8 @@ status () {
     lookstatus=$(grep urnislstatus /usr/share/urnis/src/urnis.conf | cut -c 14- | sed 's/"//g')
     if [ "${lookstatus}" = "0" ]; then
         echo "NOT RUN"
-    elif [ "${lookstatus}" = "1"]; then
+    elif [ "${lookstatus}" = "1"]
+    then
         echo "RUNNING"
     else
         echo "error"
@@ -288,10 +321,10 @@ case $option in
         update
         exit;;
     a)
-        audit 2>&1 | tee -a ${pathlog}
+        audit 2>&1 | tee ${pathlog}
         exit;;
     m)
-        audit 2>&1 | tee -a ${pathlog}
+        audit 2>&1 | tee ${pathlog}
         sudo python3 /usr/share/urnis/src/mailsender.py ${sender} ${passw} ${reciver} ${pathfilemail}
         exit;;
     l)

@@ -57,14 +57,16 @@ sudo vim /usr/share/urnis/src/dir.txt
 ## Usage/Examples
 
 ```bash
-    Options : 
+    Options :
+        OPTION  NAME         DESCRIPTION
         -h      help         help of urnis
         -a      audit        make audit of your system
         -u      update       update of Urnis
-        -l      look         generation of an audit every 12 hours automatically
+        -l &    look         generation of an audit every 12 hours automatically
         -m      audit mail   make audit of your system and send it by email
         -r      remove       remove all files of urnis
         -k      kill         stop look mode of urnis
+        -s      status       status of look mode
 
     Usage :
         sudo urnis -a
