@@ -10,12 +10,14 @@ Urnis is a script that performs a security audit of your system.
     - Update your system
     - Generation of a security audit
     - Send a security audit by mail
-    - report user with empty password
-    - report user with admin right
-    - report open port
-    - list of admin services
-    - firewall status
-    - software and hardware information of your system
+    - Report user with empty password
+    - Report user with admin right
+    - Report open port
+    - List of admin services
+    - Firewall status
+    - Software and hardware information of your system
+    - Give recommendationsto secure your system
+    - Boot information
 
 
 ## Require

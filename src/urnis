@@ -284,13 +284,12 @@ remove () {
 }
 
 kills () {
-    sudo ps -a | grep 'urnis' | awk '{print $1}' > /usr/share/urnis/data/ki.txt
-    file_path="/usr/share/urnis/data/ki.txt"
+    sudo ps -a | grep 'urnis' | awk '{print $1}' > /usr/share/urnis/data/kill.txt
+    file_path="/usr/share/urnis/data/kill.txt"
+    sudo sed -i -e 's/urnislstatus="1"/urnislstatus="0"/g' /usr/share/urnis/src/urnis.conf
     while read -r line; do
         sudo kill -9 $line
     done < "$file_path"
-    sudo rm -fr /usr/share/urnis/data/ki.txt
-    sudo sed -i -e 's/urnislstatus="1"/urnislstatus="0"/g' /usr/share/urnis/src/urnis.conf
 }
 
 update () {
@@ -300,14 +299,13 @@ update () {
 }
 
 status () {
-    echo -e "\n\n${BLEU}[+] URNIS LOOK STATUS${NC}\n-----------------------------------\n"
     lookstatus=$(grep urnislstatus /usr/share/urnis/src/urnis.conf | cut -c 14- | sed 's/"//g')
     if [ "${lookstatus}" = "0" ]; then
-        echo "NOT RUN"
+        printf "%-20s %s\n" "URNIS LOOK STATUS" "NOT RUN"
     elif [ "${lookstatus}" = "1" ];then
-        echo "RUNNING"
+        printf "%-20s %s\n" "URNIS LOOK STATUS" "RUNNING"
     else
-        echo "error"
+        printf "%-20s %s\n" "URNIS LOOK STATUS" "error"
     fi
 }
 
